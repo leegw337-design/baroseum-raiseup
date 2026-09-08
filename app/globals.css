@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1E4FD8;
+  --accent: #F96167;
+  --bg: #F8FAFC;
+  --text: #0F172A;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  /* === 버튼 === */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl
+           bg-primary-500 text-white font-semibold text-base
+           shadow-card hover:bg-primary-600 hover:shadow-card-hover
+           active:scale-95 transition-all duration-200;
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl
+           bg-accent-500 text-white font-semibold text-base
+           shadow-accent hover:bg-accent-600
+           active:scale-95 transition-all duration-200;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl
+           border-2 border-primary-500 text-primary-500 font-semibold text-base
+           hover:bg-primary-50 active:scale-95 transition-all duration-200;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg
+           text-neutral-600 font-medium hover:bg-neutral-100
+           active:scale-95 transition-all duration-150;
+  }
+
+  /* === 카드 === */
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-neutral-100
+           transition-all duration-200;
+  }
+  .card-hover {
+    @apply hover:shadow-card-hover hover:-translate-y-1;
+  }
+  .card-primary {
+    @apply rounded-2xl shadow-card p-6 text-white
+           bg-card-gradient;
+  }
+
+  /* === 섹션 === */
+  .section-wrap {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .section-title {
+    @apply text-3xl font-bold text-neutral-900 tracking-tight;
+  }
+  .section-sub {
+    @apply text-neutral-500 text-base mt-2;
+  }
+
+  /* === 배지 === */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+  }
+  .badge-primary {
+    @apply badge bg-primary-100 text-primary-700;
+  }
+  .badge-accent {
+    @apply badge bg-accent-100 text-accent-700;
+  }
+
+  /* === 점수 바 === */
+  .score-bar-track {
+    @apply w-full h-3 bg-neutral-200 rounded-full overflow-hidden;
+  }
+  .score-bar-fill {
+    @apply h-full rounded-full transition-all duration-700 ease-out;
+  }
+
+  /* === 입력 === */
+  .input-base {
+    @apply w-full px-4 py-3 border border-neutral-200 rounded-xl
+           text-neutral-900 placeholder-neutral-400
+           focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100
+           transition-all duration-150 bg-white text-sm;
+  }
+
+  /* === 탭 === */
+  .tab-item {
+    @apply flex-1 py-3 px-4 text-sm font-semibold text-center rounded-xl
+           text-neutral-500 hover:text-primary-500 hover:bg-primary-50
+           transition-all duration-150 cursor-pointer;
+  }
+  .tab-item-active {
+    @apply tab-item text-primary-600 bg-primary-50 shadow-sm;
+  }
+
+  /* === 채팅 === */
+  .chat-bubble-ai {
+    @apply max-w-[80%] bg-white border border-neutral-200 rounded-2xl rounded-tl-sm
+           px-4 py-3 text-neutral-800 text-sm shadow-sm;
+  }
+  .chat-bubble-user {
+    @apply max-w-[80%] bg-primary-500 text-white rounded-2xl rounded-tr-sm
+           px-4 py-3 text-sm ml-auto;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .drag-over { @apply ring-2 ring-primary-400 bg-primary-50; }
+}
+
+/* 스크롤바 커스텀 */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #F1F5F9; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
